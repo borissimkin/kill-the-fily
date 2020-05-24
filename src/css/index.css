@@ -1,0 +1,9 @@
+
+canvas {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: url('cursor_fly_swatter_small.png'), auto;
+
+}
