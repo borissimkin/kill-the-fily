@@ -17,6 +17,8 @@ let selectedNumberFlies = minFlies;
 let flies = []
 let playGame = false;
 
+let endTime;
+
 function createFlies() {
     for (let i = 0; i < selectedNumberFlies; i++)
     {
@@ -49,7 +51,8 @@ function getRandomIntInclusive(min, max) {
 }
 
 function createSpeedFli() {
-    return getRandomIntInclusive(1, 5);
+    // return getRandomIntInclusive(1, 5);
+    return 0;
 
 }
 
@@ -85,9 +88,8 @@ canvas.addEventListener('click', (e) => {
     flies = new_flies;
     if (!flies.length)
     {
-        let endTime = document.getElementById("timer").innerHTML;
+        endTime = document.getElementById("timer").innerHTML;
         endGame();
-        alert(`Время ${endTime}`);
     }
 
 })
@@ -110,10 +112,11 @@ function restartGame() {
 }
 
 
-function endGame() {
+function endGame(endTime) {
     stopFlies();
     stopTimer();
     playGame = false;
+    $('#write_result').dialog("open");
 
 }
 
@@ -124,4 +127,9 @@ function draw() {
         flies[i].move();
     }
     window.requestAnimationFrame(draw);
+}
+
+
+function writeResult() {
+
 }

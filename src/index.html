@@ -6,10 +6,16 @@
   <meta charset="utf-8">
   <title>Убить муху!</title>
   <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+  <script type="text/javascript" src="js/jquery-ui-1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" type="text/css" href="js/jquery-ui-1.12.1/jquery-ui.css">
   <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/dialog.js"></script>
   <script type="text/javascript" src="js/game/timer.js"></script>
   <script type="text/javascript" src="js/game/fly.js"></script>
   <script type="text/javascript" src="js/game/core.js"></script>
+  <script type="text/javascript" src="js/base.js"></script>
+
+
 
   <link href="css/index.css" rel=stylesheet type="text/css">
 
@@ -24,7 +30,18 @@
 <div class="count_flies">Мух: 3</div>
 <button class="remove_fly">-</button>
 
+
 <script>init()</script>
+
+
+<div id ="write_result" title = "Запишите рекорд!">
+  <p id="content_holder">Вы поставили рекорд для N мух</p>
+  <p><b>Ваше ник:</b><br>
+   <input type="text" size="12" value="Player">
+</div>
+
+
+
 
 </body>
 

@@ -10,7 +10,7 @@ function startTimer() {
         let elapsedTime = Date.now() - startTime;
         if (isCount)
         {
-            document.getElementById("timer").innerHTML = ((elapsedTime / 1000).toFixed(3));
+            document.getElementById("timer").innerHTML = ((elapsedTime / 1000).toFixed(1));
         }
     }, 100);
 
