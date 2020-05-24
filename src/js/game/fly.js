@@ -1,8 +1,8 @@
 
 class Fly {
-    constructor(image, canvas, pos_x, pos_y) {
+    constructor(image, speed, canvas, pos_x, pos_y) {
         this.image = image;
-        this.speed = this.initSpeed();
+        this.speed = speed;
         this.pos_x = pos_x;
         this.pos_y = pos_y;
         this.canvas = canvas;
@@ -10,12 +10,6 @@ class Fly {
         this.countIterOneDirection = 5;
         this.currentIterOneDirection = 0;
     }
-
-
-    initSpeed () {
-        return getRandomIntInclusive(1, 5);
-    }
-
 
     gettingOutEdge() {
         let isEdge = false;
