@@ -1,5 +1,4 @@
 
-let timer = $('.timer');
 let startTime = Date.now();
 
 let interval;

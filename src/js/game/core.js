@@ -25,6 +25,17 @@ function createFlies() {
 
 }
 
+function addFly() {
+    let fly = new Fly(flyImage,0, canvas, getRandomIntInclusive(20, canvas.width - 20), getRandomIntInclusive(20, canvas.height -20))
+    flies.push(fly);
+
+}
+
+function removeFly() {
+    flies.pop();
+
+}
+
 function init() {
     window.requestAnimationFrame(draw);
     createFlies();
@@ -76,7 +87,7 @@ canvas.addEventListener('click', (e) => {
     {
         let endTime = document.getElementById("timer").innerHTML;
         endGame();
-        alert(`Время ${endTime}`)
+        alert(`Время ${endTime}`);
     }
 
 })
