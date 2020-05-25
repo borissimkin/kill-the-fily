@@ -19,16 +19,24 @@ let playGame = false;
 
 let endTime;
 
+let username = 'Player'
+
+let showResult = false;
+
 function createFlies() {
     for (let i = 0; i < selectedNumberFlies; i++)
     {
-        flies[i] = new Fly(flyImage,0, canvas, getRandomIntInclusive(20, canvas.width - 20), getRandomIntInclusive(20, canvas.height -20))
+        flies[i] = createFly();
     }
 
 }
 
+function createFly() {
+    return new Fly(flyImage,0, canvas, getRandomIntInclusive(20, canvas.width - 20), getRandomIntInclusive(20, canvas.height -20))
+}
+
 function addFly() {
-    let fly = new Fly(flyImage,0, canvas, getRandomIntInclusive(20, canvas.width - 20), getRandomIntInclusive(20, canvas.height -20))
+    let fly = createFly()
     flies.push(fly);
 
 }
@@ -108,20 +116,32 @@ function restartGame() {
     createFlies();
     stopTimer();
     playGame = false;
+    showResult = false;
 
 }
 
 
-function endGame(endTime) {
+function endGame() {
     stopFlies();
     stopTimer();
     playGame = false;
-    $('#write_result').dialog("open");
+    let bestResult = getBestResultForCurrentNumberFlies(selectedNumberFlies);
+    if (bestResult === undefined || bestResult > parseFloat(endTime))
+        $('#write_result').dialog("open");
+    else {
+        showResult = true;
+
+    }
 
 }
 
 function draw() {
     ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
+    if (showResult) {
+        ctx.font = "30pt Calibri";
+        ctx.textAlign = 'center';
+        ctx.fillText(`${selectedNumberFlies} мухи за ${endTime} с.`, canvas.width / 2, canvas.height / 3);
+    }
     for (let i in flies){
         ctx.drawImage(flies[i].image, flies[i].pos_x, flies[i].pos_y);
         flies[i].move();
@@ -131,5 +151,8 @@ function draw() {
 
 
 function writeResult() {
+    username = $('#nick').val();
+    addToStorage(username, selectedNumberFlies, endTime);
+    $('#write_result').dialog("close");
 
 }

@@ -4,7 +4,7 @@ $(document).on('click', '.start_button', function (e) {
 }).on('click', '.restart', function (e) {
     restartGame();
 }).on('click', '.add_fly', function (e) {
-    if (selectedNumberFlies < maxFlies && !playGame)
+    if (selectedNumberFlies < maxFlies && !playGame && flies.length)
     {
         addFly();
         selectedNumberFlies += 1;
@@ -13,7 +13,7 @@ $(document).on('click', '.start_button', function (e) {
 
 
 }).on('click', '.remove_fly', function (e) {
-    if (selectedNumberFlies > minFlies && !playGame)
+    if (selectedNumberFlies > minFlies && !playGame && flies.length)
     {
         removeFly();
         selectedNumberFlies -= 1;
